@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+    <cron>
+        <url>/Crawler.groovy</url>
+        <description>Mail out a daily report</description>
+        <schedule>every day 17:00</schedule>
+        <timezone>Pacific/Auckland</timezone>
+    </cron>
+</cronentries>
