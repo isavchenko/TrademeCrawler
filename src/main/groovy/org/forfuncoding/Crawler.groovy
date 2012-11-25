@@ -54,7 +54,6 @@ class Crawler {
             }
         }
         def mailText = mailGenerator.generateMailText(newDailyRealEstates, realEstates)
-        println("Message content:\n$mailText")
         mailSender.sendMail(settings.emails, settings.subject, mailText)
     }
 

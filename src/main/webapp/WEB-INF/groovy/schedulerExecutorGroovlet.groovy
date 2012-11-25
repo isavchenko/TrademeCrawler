@@ -9,6 +9,7 @@ import org.forfuncoding.entities.RealEstatesFilter
 /**
  * Scheduler based on the settings from google Big Table
  */
+log.info("Getting settings from storage...")
 def datastore = DatastoreServiceFactory.getDatastoreService();
 def key = KeyFactory.createKey("settings", "crawlerSetting");
 def entity
@@ -20,13 +21,16 @@ try {
     entity.save()
 }
 
+log.info("Scheduler settings are ${entity}")
+
 def settings = new SchedulerSettings()
 settings.dayTime = entity.dayTime
 settings.emails = entity.emails
 settings.subject = entity.subject
-log.info("Scheduler settings are $settings")
 
-if(params.startParsing != null || Calendar.instance.get(Calendar.HOUR_OF_DAY) == entity.dayTime) {
+log.info("Parameter startParsing=${params.startParsing}")
+log.info("Current hour=${Calendar.instance.get(Calendar.HOUR_OF_DAY)}")
+if(params.startParsing != null || Calendar.getInstance(TimeZone.getTimeZone("Pacific/Auckland")).get(Calendar.HOUR_OF_DAY) == settings.dayTime) {
     log.info("Start crawling...")
     def crawler = Crawler.createCrawler(new RealEstatesFilter(), settings)
     crawler.process()

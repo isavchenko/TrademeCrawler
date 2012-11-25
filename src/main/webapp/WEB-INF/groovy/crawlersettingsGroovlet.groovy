@@ -20,15 +20,16 @@ def defaultSettings = SchedulerSettings.getDefaultSettings()
 def areSettingsSaved = false
 if(params.size() > 0) {
     log.info("Params found")
+
     def dayTime = params.dayTime?.toString()?.toInteger()
-    def emails = params.emails?.toString()
+    def emails = params.emails
     def subject = params.subject
 
     //save settings
     if(entity == null) {
         entity = new Entity(key)
     }
-    entity.dayTime = dayTime?:defaultSettings.dayTime
+    entity.dayTime = dayTime != null ? dayTime : defaultSettings.dayTime
     entity.emails = emails?:defaultSettings.emails
     entity.subject = subject?:defaultSettings.subject
     entity.save()
