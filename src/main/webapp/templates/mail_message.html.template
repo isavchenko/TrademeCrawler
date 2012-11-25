@@ -1,0 +1,42 @@
+<% import org.forfuncoding.entities.RealEstate %>
+<html>
+    <head>
+        <title>Daily update</title>
+    </head>
+    <body>
+        <% if(realEstateDailyLinkLists.size() > 0) { %>
+        <p>
+            <b>New daily links:</b><br/>
+            <%
+                for(Map.Entry realEstateDailyLinkList in realEstateDailyLinkLists) {
+                    if(realEstateDailyLinkList.value.size() > 0) {
+                        println realEstateDailyLinkList.key
+                        println "<ul>"
+                        for(RealEstate realEstate in realEstateDailyLinkList.value) {
+                            println "<li><a href='${realEstate.link}'>${realEstate.name}</a></li>"
+                        }
+                        println "</ul>"
+                    }
+                }
+            %>
+        </p>
+        <% } %>
+        <% if(realEstateLinkLists.size() > 0) { %>
+        <p>
+            <b>All links:</b><br/>
+            <%
+                for(Map.Entry realEstateLinkList in realEstateLinkLists) {
+                    if(realEstateLinkList.value.size() > 0) {
+                        println "${realEstateLinkList.key}<br />"
+                        println "<ul>"
+                        for(RealEstate realEstate in realEstateLinkList.value) {
+                            println "<li><a href='${realEstate.link}'>${realEstate.name}</a></li>"
+                        }
+                        println "</ul>"
+                    }
+                }
+            %>
+        </p>
+        <% } %>
+    </body>
+</html>

@@ -37,6 +37,7 @@ dependencies {
     compile 'org.gaelyk:gaelyk:1.2'
     compile name: 'tagsoup-1.2.1'
     compile name: 'mail'
+    compile 'com.google.inject:guice:3.0'
     //compile fileTree(dir: 'lib', include: '*.jar')
     
     /** 

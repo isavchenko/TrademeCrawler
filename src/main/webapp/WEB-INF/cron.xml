@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
     <cron>
-        <url>/Crawler.groovy</url>
+        <url>/schedulerExecutorGroovlet.groovy</url>
         <description>Mail out a daily report</description>
-        <schedule>every day 17:00</schedule>
+        <schedule>every 60 minutes</schedule>
         <timezone>Pacific/Auckland</timezone>
     </cron>
 </cronentries>

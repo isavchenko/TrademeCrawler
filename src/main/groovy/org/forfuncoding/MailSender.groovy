@@ -5,16 +5,12 @@ import javax.mail.internet.MimeMessage
 import javax.mail.internet.InternetAddress
 import javax.mail.Transport
 /**
- * Created with IntelliJ IDEA.
- * User: Ivan
- * Date: 3/11/12
- * Time: 1:37 AM
- * To change this template use File | Settings | File Templates.
+ * Send email
  */
 class MailSender {
-    static user = "this.behappy2009@gmail.com"//"behappy2009@yandex.ru"
+    static from = "this.behappy2009@gmail.com"
 
-    static sendMail(to, subject, body)
+    def sendMail(to, subject, body)
     {
         try
         {
@@ -23,9 +19,9 @@ class MailSender {
             def session = Session.getInstance(props, null) ;
             def msg = new MimeMessage(session) ;
 
-            msg.setText(body) ;
+            msg.setContent(body, "text/html") ;
             msg.setSubject(subject) ;
-            msg.setFrom(new InternetAddress(user)) ;
+            msg.setFrom(new InternetAddress(from)) ;
             msg.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to)) ;
 
             println ("Sending message") ;
